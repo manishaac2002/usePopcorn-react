@@ -10,13 +10,15 @@ const starContainStyle = {
     display: "flex",
 }
 
+//custom props can we do in propTypes
 
 
 export default function StarRating({
     maxRating = 5,
     color = "#fcc419",
     size = 48,
-    className = "" }) {
+    className = "",
+    message = [] }) {
 
     const [rating, setRating] = useState(0)
     const [tempRating, setTempRating] = useState(0)
@@ -47,7 +49,8 @@ export default function StarRating({
 
                 ))}
             </div>
-            <p style={textStyle}>{tempRating || rating || ""}</p>
+            <p style={textStyle}>
+                {message.length === maxRating ? message[tempRating ? tempRating - 1 : rating - 1] : tempRating || rating}</p>
         </div>
     )
 }
